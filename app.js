@@ -11,6 +11,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/blog/new', (req, res) => {
+    res.send("new");
+});
+
 app.listen(8080, 'localhost', function() {
     console.log("Server is now running..");
 });
