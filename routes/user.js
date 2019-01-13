@@ -10,7 +10,7 @@ router.get('/user/logout', (req, res) => {
 });
 
 router.get('/user/new', (req, res) => {
-    res.send('redirect to form');
+    res.render('./user/new');
 })
 
 router.post('/user', (req, res) => {
