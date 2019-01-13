@@ -1,8 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const URL = require('./config/config')
 const app = express();
 
+mongoose.connect(URL, {useNewUrlParser: true, dbName: 'blog'})
+        .then(
+            () => { console.log('Database Successfully Connected')},
+            err => { console.log('Failed to connect to the Database')}
+        );
 // router
 const blogRouter = require('./routes/blog.js')
 
