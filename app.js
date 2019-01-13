@@ -11,6 +11,7 @@ mongoose.connect(URL, {useNewUrlParser: true, dbName: 'blog'})
         );
 // router
 const blogRouter = require('./routes/blog.js')
+const userRouter = require('./routes/user.js')
 
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -22,6 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.use(blogRouter)
+app.use(userRouter)
 
 
 app.listen(8080, 'localhost', function() {
