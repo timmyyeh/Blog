@@ -2,18 +2,15 @@
 <div class="container mt-5">
     <form method="POST" action="/blog">
         <div class="form-group">
-            <label for="username">Username</label>
-            <input class="form-control" id="username" placeholder="username" name="user[username]">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" placeholder="Title" name="blog[title]">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" id="password" placeholder="password" name="user[password]">
+            <label for="exampleFormControlTextarea1">Content</label>
+            <textarea name="blog[content]" class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
         </div>
-        <div class="form-group">
-            <label for="confirm">Password Confirmation</label>
-            <input class="form-control" id="confirm" name="user[password_confirmation]" placeholder="password">
-        </div>
-        <button class="btn btn-success">Create Account</button>
+        
+        <button class="btn btn-success">Post Blog</button>
     </form>
 </div>
 <%- include('../partials/footer') %>

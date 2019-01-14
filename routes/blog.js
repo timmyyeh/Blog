@@ -12,7 +12,16 @@ router.get('/blog/new', (req, res) => {
 // [create Route]
 // create new blog
 router.post('/blog', (req, res) => {
-    
+    const { title, content } = req.body.blog;
+    Blog.create({
+        title: title,
+        content: content
+    })
+    .then((blog) => {
+        console.log(blog);
+        res.redirect('/');
+    })
+    .catch(err => console.log(err));
 });
 
 
