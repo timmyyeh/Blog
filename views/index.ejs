@@ -9,6 +9,19 @@
         <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
         <a class="btn btn-primary" href="/blog/new">Add New Post</a>
     </div>
+    <div class="row">
+        <% blogs.map(blog => { %>
+            <div class="col-lg-4 col-md-6 mt-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title"><span>Title: </span><%= blog.title %></h5>
+                      <p class="card-text"><%= blog.content.substring(0,10) + '...' %></p>
+                      <a href="/blog/<%= blog._id %>" class="btn btn-primary">Read More</a>
+                    </div>
+                  </div>
+            </div>
+        <% }) %>
+    </div>
 </div>
 
 <%- include('./partials/footer') %>

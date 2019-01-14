@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const Blog = require('./models/blog');
 const URL = require('./config/config')
 const app = express();
 
@@ -19,7 +20,12 @@ app.use(bodyParser.json())
 
 
 app.get('/', (req, res) => {
-    res.render('index');
+    Blog.find({})
+        .then((blogs) => {
+            res.render('index', { blogs });
+        })
+        .catch(err => console.log(err));
+    
 });
 
 app.use(blogRouter)
