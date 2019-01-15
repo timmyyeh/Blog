@@ -27,7 +27,7 @@ app.use(session({
     saveUninitialized: true
 }));
 app.use(passport.initialize());
-app.use(passport.session)
+app.use(passport.session())
 
 
 passport.use(new LocalStrategy(
@@ -38,7 +38,7 @@ passport.use(new LocalStrategy(
             if (!user) {
                 return done(null, false, { message: 'Incorrect username.' });
             }
-            if (!user.validPassword(passport)) {
+            if (user.password != password) {
                 return done(null, false, { message: 'Incorrect password.' });
             }
             return done(null, user);
@@ -56,6 +56,11 @@ passport.deserializeUser(function(id, done) {
 
 
 app.get('/', (req, res) => {
+    if (req.user) {
+        console.log(req.user);
+    } else {
+        console.log('No user');
+    }
     Blog.find({})
         .then((blogs) => {
             res.render('index', { blogs });

@@ -1,10 +1,16 @@
 const app = require('express')
+const password = require('passport');
 const User = require('../models/user');
 const router = app.Router();
 
 router.get('/user/login', (req, res) => {
-    res.send('login');
+    res.render('./user/login');
 });
+
+router.post('/user/login', password.authenticate('local',{
+    successRedirect: '/',
+    failureRedirect: '/user/login'
+}));
 
 router.get('/user/logout', (req, res) => {
     res.send('logout');
