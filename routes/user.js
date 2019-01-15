@@ -13,7 +13,8 @@ router.post('/user/login', password.authenticate('local',{
 }));
 
 router.get('/user/logout', (req, res) => {
-    res.send('logout');
+    req.logout();
+    res.redirect('/');
 });
 
 router.get('/user/new', (req, res) => {
