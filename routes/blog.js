@@ -24,6 +24,19 @@ router.post('/blog', (req, res) => {
     .catch(err => console.log(err));
 });
 
+// [show Route]
+// show detail of the blog
+router.get('/blog/:id', (req, res) => {
+    const id = req.params.id;
+    Blog.findById(id)
+        .then(blog => {
+            res.render('./blog/show', { blog });
+        })
+        .catch(err => console.log(err));
+});
+
+
+
 
 
 module.exports = router;
