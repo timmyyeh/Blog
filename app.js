@@ -54,13 +54,20 @@ passport.deserializeUser(function(id, done) {
     });
 });
 
+// middleware to check whether user is logged in or not
+app.use(function(req, res, next) {
+    console.log('hi');
+    next();
+    res.locals.user = req.user;
+    if (res.locals.user) {
+        console.log(res.locals.user);
+    } else{
+        console.log('no user');
+    }
+});
 
 app.get('/', (req, res) => {
-    if (req.user) {
-        console.log(req.user);
-    } else {
-        console.log('No user');
-    }
+
     Blog.find({})
         .then((blogs) => {
             res.render('index', { blogs });
